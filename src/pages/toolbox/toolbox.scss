@@ -1,0 +1,27 @@
+.toolbox-outer{
+    width: 100%;
+    height: 100vh;
+    .toolbox-header{
+        width: 100%;
+        height: 108px;
+        background-image: url('https://s3.bmp.ovh/imgs/2022/04/16/571610bb7f6c7059.png');
+        Text{
+            height: 108px;
+            line-height: 108px;
+            font-size: 40px;
+            font-weight: 550;
+            color: #333333;
+            margin-left: 20px;
+        }
+    }
+    .toolbox-btns{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        Image{
+            width: 680px;
+            height: 290px;
+            margin-bottom: 30px;
+        }
+    }
+}

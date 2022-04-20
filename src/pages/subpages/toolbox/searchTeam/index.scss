@@ -1,0 +1,116 @@
+.toolbox-searchteam-outer{
+    width: 100%;
+    height: 100vh;
+    .toolbox-searchteam-header{
+        width: 100%;
+        height: 108px;
+        background-image: url('https://s1.ax1x.com/2022/03/08/bgWrz6.png');
+        .toolbox-searchteam-header-fixed{
+            width: 100%;
+            height: 108px;
+            position: fixed;
+            .toolbox-searchteam-header-content{
+                width: calc(100% - 60px);
+                height: 108px;
+                display: flex;
+                align-items: center;
+                margin: 0 auto;
+                .toolbox-searchteam-searchbox{
+                    width: 621px;
+                    height: 64px;
+                    background: #FFFFFF;
+                    border: 2px solid #FFCF33;
+                    margin: 0 auto;
+                    border-radius: 31px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    Input{
+                        width: 448px;
+                        height: 40px;
+                        font-size: 28px;
+                        font-weight: 400;
+                        color: #6D6D6D;
+                        margin-left: 28px;
+                        box-sizing: border-box;
+    
+                    }
+                    .toolbox-searchteam-searchbox-btn{
+                        width: 116px;
+                        height: 60px;
+                        background: linear-gradient(225deg, #FFA40F 0%, #FFCF33 100%);
+                        border-radius: 30px;
+                        color: #FFFFFF;
+                        font-size: 32px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin-right: 2px;
+                        box-sizing: border-box;
+                    }
+                }
+            }
+        }
+    }
+    .toolbox-searchteam-content-mask{
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+        background: rgba(0, 0, 0, 0.4);
+        position: fixed;
+    }
+    .toolbox-searchteam-content{
+        width: 700px;
+        height: calc(100% - 108px);
+        box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.12);
+        background: #FFFFFF;
+        border-radius: 40px;
+        overflow: scroll;
+        margin: 0 auto;
+        padding: 60px 45px 0 38px;
+        box-sizing: border-box;
+        position: relative;
+        .toolbox-searchteam-content-item{
+            width: 100%;
+            height: 180px;
+            display: flex;
+            margin-bottom: 56px;
+            .toolbox-searchteam-content-item-left{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 180px;
+                height: 180px;
+                border-radius: 18px;
+                Image{
+                    border-radius: 18px;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .toolbox-searchteam-content-item-right{
+                margin-left: 20px;
+                width: calc(100% - 160px);
+                height: 100%;
+                .toolbox-searchteam-content-item-teamname{
+                    font-weight: 550;
+                    font-size: 32px;
+                    color: #333333;
+                }
+                .toolbox-searchteam-content-item-teaminfo{
+                    margin-top: 4px;
+                    font-size: 28px;
+                    font-weight: 400;
+                    color: #6D6D6D;
+                }
+            }
+        }
+        .toolbox-searchteam-content-createteam-btn{
+            width: 114px;
+            height: 114px;
+            position: fixed;
+            bottom: 77px;
+            right: 11px;
+        }
+    }
+}

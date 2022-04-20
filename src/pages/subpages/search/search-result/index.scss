@@ -1,0 +1,170 @@
+.search-result-header-container{
+    width: 100%;
+    height: 140px;
+    .search-result-header-outer{
+        position: fixed;
+        width: 100%;
+        height: 140px;
+        .search-result-header{
+            width: 100%;
+            height: 140px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(180deg, #FFECCE 0%, #FFF8EC 100%);
+            .search-result-header-searchbox{
+                display: flex;
+                align-items: center;
+                width: 561px;
+                height: 62px;
+                background-color: white;
+                border-radius: 32px;
+                .search-result-header-searchbox-icon{
+                    width: 34px;
+                    height: 34px;
+                    margin-left: 22px;
+                }
+                Input{
+                    margin-left: 28px;
+                    height: 50px;
+                    width: 100%;
+                }
+            }
+            .search-result-header-collect-img{
+                margin-left: 30px;
+                margin-bottom: 6px;
+                width: 49px;
+                height: 48px;
+            }
+        }
+    }
+}
+.market-search-result-displaycontent{
+    box-sizing: border-box;
+    padding: 20px;
+    // display: flex;
+    // justify-content: space-between;
+    // flex-wrap: wrap;
+    width: 100%;
+    column-count: 2;
+    column-gap: 20px;
+    .market-search-result-displaycontent-item:nth-child(1){
+        margin-top: 0px;
+    }
+    .market-search-result-displaycontent-item{
+        width: 330px;
+        margin-top: 20px;
+        break-inside:avoid;
+        .market-search-result-displaycontent-item-img-outer-height-adaptive{
+            width: 330px;
+            height: 330px;
+            overflow: hidden;
+            border-radius: 20px 20px 0 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+                .market-search-result-displaycontent-item-img{
+                    width: 100%;
+                    height: 100%;
+                    display: inline-block;
+                    break-inside:avoid;
+                }
+        }
+        .market-search-result-displaycontent-item-img-outer-width-adaptive{
+            width: 330px;
+            height: 330px;
+            overflow: hidden;
+            border-radius: 20px 20px 0 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+                .market-search-result-displaycontent-item-img{
+                    width: 100%;
+                    height: 100%;
+                    display: inline-block;
+                    break-inside:avoid;
+                }
+        }
+        .market-search-result-displaycontent-item-title{
+            margin-top: 18px;
+            width: 100%;
+            font-size: 28px;
+            color: #333333;
+            padding: 0 15px;
+            box-sizing: border-box;
+        }
+        .market-search-result-displaycontent-item-footer{
+            margin-top: 16px;
+            width: 100%;
+            padding: 0 15px;
+            box-sizing: border-box;
+            Text:nth-child(1){
+                color: #FFA40F;
+                font-size: 28px;
+                font-weight: 600;
+            }
+            Text:nth-child(2){
+                color:#A8A8A8;
+                font-size: 22px;
+                margin-left: 14px;
+            }
+        }
+    }
+}
+.bookhouse-search-result-displaycontent{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .bookhouse-search-result-displaycontent-item{
+        width: 684px;
+        height: 232px;
+        box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.08);
+        border-radius: 18px;
+        padding: 16px;
+        margin-top: 20px;
+        box-sizing: border-box;
+        display: flex;
+        .bookhouse-search-result-displaycontent-item-img-outer{
+            width: 200px;
+            height: 200px;
+            border-radius: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .bookhouse-search-result-displaycontent-item-img{
+                border-radius: 18px;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .bookhouse-search-result-displaycontent-item-rightpart{
+            width: calc(100% - 200px);
+            height: 100%;
+            margin-left: 20px;
+            box-sizing: border-box;
+            .bookhouse-search-result-displaycontent-item-title{
+                font-size: 32px;
+                font-weight: 400;
+                color: #333333;
+            }
+            .bookhouse-search-result-displaycontent-item-basic-info{
+                margin-top: 16px;
+                View{
+                    margin-top: 8px;
+                    font-size: 22px;
+                    font-weight: 400;
+                    color: #6D6D6D;
+                }
+            }
+            
+            .bookhouse-search-result-displaycontent-item-price{
+                margin-top: 28px;
+                font-size: 36px;
+                font-weight: 500;
+                color: #FFA40F;
+            }
+        }
+    }
+}

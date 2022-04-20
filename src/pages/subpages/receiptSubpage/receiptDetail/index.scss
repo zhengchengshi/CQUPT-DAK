@@ -1,0 +1,116 @@
+@keyframes graduallyHidden {
+    0%{
+        opacity: 1;
+    }
+    30%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+.receiptDetail-outer{
+    width: 100%;
+    height: 100vh;
+    .receiptDetail-header{
+        width: 100%;
+        height: 100px;
+        background-image: url('https://s1.ax1x.com/2022/03/29/q64Zu9.png');
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 30px;
+        box-sizing: border-box;
+        .receiptDetail-header-left{
+            height: 100%;
+            display: flex;
+            align-items: center;
+            .receiptDetail-header-title{
+                font-size: 40px;
+                font-weight: 550;
+                color: #333333;
+            }
+        }
+        .receiptDetail-header-right{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            Text{
+                font-size: 22px;
+                color: #A8A8A8;
+            }
+        }
+    }
+    .receiptDetail-content{
+        width: 100%;
+        height: calc(100vh - 198px);
+        padding: 20px 30px 0 30px;
+        box-sizing: border-box;
+        overflow: scroll;
+        position: relative;
+        .receiptDetail-content-description{
+
+            font-size: 33px;
+            color: #333333;
+            font-weight: 400;
+        }
+        .receiptDetail-content-image > Image{
+            margin-top: 18px;
+            width: 100%;
+            height: 690px;
+            border-radius: 18px;
+        }
+        .receiptDetail-notice{
+            animation: graduallyHidden 2s ;
+            animation-fill-mode:forwards;
+            box-sizing: border-box;
+            padding: 20px 22px;
+            border-radius: 20px;
+            position: fixed;
+            background: linear-gradient(270deg, #FFECCE 0%, #FFF8EC 100%);
+            width: 544px;
+            height: 126px;
+            bottom: 116px;
+            right: 30px;
+            Text{
+                display: inline-block;
+                font-size: 31px;
+                color: #FFA40F;
+                font-weight: 400;
+                width: 100%;
+            }
+        }
+    }
+    .receiptDetail-footer{
+        width: 100%;
+        height: 98px;
+        box-shadow: 0px -2px 6px 0px rgba(168, 168, 168, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        .receiptDetail-footer-price{
+            font-size: 28px;
+            font-weight: 500;
+            color: #6D6D6D;
+            margin-right: 24px;
+            Text{
+                font-weight: 550;
+                color: #FFA40F;
+                font-size: 30px;
+            }
+        }
+        .receiptDetail-footer-chat-btn{
+            width: 260px;
+            height: 68px;
+            background: linear-gradient(225deg, #FFA40F 0%, #FFCF33 100%);
+            border-radius: 34px;
+            text-align: center;
+            line-height: 68px;
+            font-weight: 600;
+            color: #FFFFFF;
+            font-size: 32px;
+            margin-right: 46px;
+        }
+    }
+
+}

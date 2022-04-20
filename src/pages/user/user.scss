@@ -1,0 +1,141 @@
+.user-outer{
+    width: 100%;
+    height: 100vh;
+    background-image: url('https://s1.ax1x.com/2022/04/16/LYGTBT.png');
+    background-repeat: no-repeat;
+    padding-top: 88px;
+    box-sizing: border-box;
+    .user-background{
+        margin-top: -88px;
+        .user-background-img{
+            position: absolute;
+            z-index: -1;
+            width: 100%;
+            height: 750px;
+        }
+    }
+    .user-userinfo{
+        display: flex;
+        width: 100%;
+        box-sizing: border-box;
+        padding-left: 30px;
+        .user-userinfo-right{
+            padding-left: 30px;
+            box-sizing: border-box;
+            margin-top: auto;
+            .user-userinfo-firstline{
+                display: flex;
+                .user-userinfo-username{
+                    font-size: 40px;
+                    font-weight: 550;
+                    color: #333333;
+                }
+                .user-userinfo-usergender{
+                    margin-top: auto;
+                    margin-left: 30px;
+                    width: 38px;
+                    height: 30px;
+                    background: rgb(0,167,255,0.6);
+                    border-radius: 16px;
+                    opacity: 0.6;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    Image{
+                        width: 18px;
+                        height: 18px;
+    
+                    }
+                }
+            }
+            .user-userinfo-secondline{
+                margin-top: 10px;
+                .user-userinfo-usersign{
+                    font-size: 28px;
+                    color: #6D6D6D;
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+    .user-userinfo-notice{
+        width: 100%;
+        height: 90px;
+        padding: 0 26px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 42px;
+        .user-userinfo-massage{
+            width: 318px;
+            height: 90px;
+            background: #FFFFFF;
+            box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.12);
+            display: flex;
+            align-items: center;
+            border-radius: 20px;
+            Text{
+                font-size: 32px;
+                font-weight: 400;
+                color: #333333;
+                margin-left: 56px;
+            }
+            Image{
+                width: 40px;
+                height: 40px;
+                margin-left: 40px;
+            }
+        }
+    }
+    .user-userinfo-operate{
+        width: 666px;
+        height: 340px;
+        background: #FFFFFF;
+        box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.12);
+        border-radius: 20px;
+        margin: 34px auto;
+        padding: 36px 38px 0 38px;
+        box-sizing: border-box;
+        .user-userinfo-operate-item{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 36px;
+            .user-userinfo-operate-item-left{
+                display: flex;
+                Image{
+                    width: 38px;
+                    height: 38px;
+                }
+                Text{
+                    font-size: 28px;
+                    font-weight: 400;
+                    color: #333333;
+                    margin-top: auto;
+                    margin-left: 10px;
+                    display: inline-block;
+                }
+            }
+            .user-userinfo-operate-item-right{
+                margin-top: auto;
+                Image{
+                    width: 22px;
+                    height: 22px;
+                }
+            }
+        }
+    }
+    .user-userinfo-quitbtn{
+        margin-top: 34px;
+        width: 666px;
+        height: 74px;
+        background: #F0F0F0;
+        border-radius: 20px;
+        margin: 0 auto;
+        font-size: 32px;
+        font-weight: 400;
+        color: #A8A8A8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

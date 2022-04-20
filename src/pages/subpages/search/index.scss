@@ -1,0 +1,74 @@
+.search-outer{
+    .search-content{
+        .search-header{
+            margin-top: 20px;
+            width: 100%;
+            justify-content: center;
+            display: flex;
+            .search-header-searchbox{
+                display: flex;
+                align-items: center;
+                width: 672px;
+                height: 64px;
+                background-color: #F0F0F0;
+                border-radius: 30px;
+                .search-header-searchbox-icon{
+                    width: 34px;
+                    height: 34px;
+                    margin-left: 22px;
+                }
+                Input{
+                    margin-left: 16px;
+                    height: 50px;
+                    width: 100%;
+                }
+            }
+        }
+        .search-history{
+            .search-history-header{
+                padding: 0 28px;
+                display: flex;
+                justify-content: space-between;
+                margin-top: 24px;
+                Text{
+                    margin-left: 10px;
+                    font-size: 28px;
+                    color: #333333;
+                    font-weight: bold;
+                }
+                .search-history-recycleBin-btn{
+                    height: 40px;
+                    width: 40px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    .search-history-recycleBin-icon{
+                        width: 34px;
+                        height: 34px;
+                    }
+                }
+            }
+            .search-history-content{
+                padding: 0 38px;
+                .search-history-item-outer{
+                    display: inline-block;
+                    margin-top: 20px;
+                    margin-right: 12px;
+                    .search-history-item{
+                        display: inline-block;
+                        background-color: #F0F0F0;
+                        border-radius: 27px;
+                        Text{
+                            color: #333333;
+                            font-size: 28px;
+                            margin: 4px 20px;
+                        }
+                    }
+                    .hidden{
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}

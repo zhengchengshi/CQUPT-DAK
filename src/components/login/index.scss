@@ -1,0 +1,94 @@
+.login-outer{
+    width: 100%;
+    height: 100vh;
+    .login-back-btn{
+        width: 35px;
+        height: 35px;
+        position: absolute;
+        left: 30px;
+        top: 27px;
+    }
+    .login-background{
+        width: 100%;
+        height: 550px;
+        background-image: url('https://s1.ax1x.com/2022/04/16/LYGTBT.png');
+        background-repeat: no-repeat;
+        background-size:cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .login-logo{
+            width: 140px;
+            height: 140px;
+        }
+    }
+    .login-student-number{
+        width: 622px;
+        height: 78px;
+        background: #FFFFFF;
+        border-radius: 20px;
+        border: 1px solid #D8D8D8;
+        margin: -133px auto 0 auto;
+        padding-left: 40px;
+        font-size: 28px;
+        font-weight: 400;
+        color: #333333;
+    }
+    .login-student-name{
+        width: 622px;
+        height: 78px;
+        background: #FFFFFF;
+        border-radius: 20px;
+        border: 1px solid #D8D8D8;
+        margin: 36px auto 0 auto;
+        padding-left: 40px;
+        font-size: 28px;
+        font-weight: 400;
+        color: #333333;
+
+    }
+    .login-notice{
+        width: 622px;
+        margin: 0 auto;
+        font-size: 22px;
+        font-weight: 400;
+        color: #333333;
+        line-height: 30px;
+        margin-top: 18px;
+    }
+    .login-btn{
+        width: 622px;
+        height: 78px;
+        background: #0062FF;
+        border-radius: 20px;
+        opacity: 0.2;
+        margin: 40px auto 24px auto;
+        font-size: 32px;
+        font-weight: 600;
+        color: #FFFFFF;
+        text-align: center;
+        line-height: 78px;
+    }
+    .login-btn-active{
+        opacity: 1;
+    }
+    .login-step{
+        margin-top: 24px;
+        font-weight: 400;
+        color: #D8D8D8;
+        font-size: 28px;
+        margin: 24px auto 0 auto;
+        width: fit-content;
+    }
+    .login-direct{
+        width: fit-content;
+        margin: 232px auto 0 auto;
+        font-size: 22px;
+        font-weight: 400;
+        color: #A8A8A8;
+        Text{
+            color: #0062FF;
+        }
+    }
+}

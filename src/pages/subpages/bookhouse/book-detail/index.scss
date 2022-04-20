@@ -1,0 +1,215 @@
+.book-detail-outer{
+    height: 100vh;
+    position: relative;
+    .book-detail-header{
+        width: 100%;
+        height: 110px;
+        .book-detail-header-fixed{
+            width: 100%;
+            height: 140px;
+            background: linear-gradient(180deg, #FFECCE 0%, rgba(255, 248, 236, 0.6) 100%);
+            position: fixed;
+            .book-detail-header-icon{
+                width: 49px;
+                height: 49px;
+                position: absolute;
+                top:calc(50% - 24.5px);
+                right: 28px;
+            }
+        }
+    }
+    .book-detail-content{
+        width: 100%;
+        // 减底部栏和顶部栏
+        height: calc(100% - 206px);
+        position: fixed;
+        .book-detail-swiper-outer{
+            position: relative;
+            .book-detail-swiper{
+                width: 100%;
+                height: 500px;
+                .book-detail-swiper-item-img-outer-height-adaptive{
+                    width: 100%;
+                    height: 500px;
+                    overflow: hidden;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                        .book-detail-swiper-item-img{
+                            width: 100%;
+                            height: 100%;
+                            display: inline-block;
+                        }
+                }
+                .book-detail-swiper-item-img-outer-width-adaptive{
+                    width: 100%;
+                    height: 500px;
+                    overflow: hidden;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                        .book-detail-swiper-item-img{
+                            width: 100%;
+                            height: 100%;
+                        }
+                }
+            }
+            .book-detail-swiper-capsule{
+                position: absolute;
+                right: 18px;
+                bottom: 20px;
+                background-color: #333333;
+                border-radius: 18px;
+                opacity: 0.8;
+                width: 78px;
+                height: 38px;
+                Text{
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%,-50%);
+                    font-size: 22px;
+                    color: #F9F9F9;
+                }
+            }
+        }
+        .book-detail-info{
+            width: 684px;
+            height: calc(100% - 500px);
+            margin: 0 auto;
+            box-sizing: border-box;
+            padding: 22px 24px 0 24px;
+            // display: flex;
+            // flex-direction: column;
+            // justify-content: space-around;
+            // position: relative;
+            .book-detail-firstline{
+                width: 100%;
+                height: 70px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .book-detail-price{
+                    font-size: 38px;
+                    font-weight: 800;
+                    color: #FFA40F;
+                    Text{
+                        margin-left: 20px;
+                        font-size: 22px;
+                        font-weight: 400;
+                        color: #6D6D6D;
+                    }
+                }
+                .book-detail-bringUp{
+                    display: flex;
+                    color: #333333;
+                    font-size: 28px;
+                    font-weight: 400;
+                    align-items: center;
+                    .at-switch{
+                        background-color: transparent !important;
+                        margin: 0 !important;
+                        padding: 0 !important;
+                        transform: scale(0.7, 0.7) !important;
+
+                        .at-switch__container{
+                            background-color: transparent !important;
+                        }
+                    }
+                }
+            }
+            .book-detail-title{
+                color: #333333;
+                font-size: 32px;
+                font-weight: 550;
+                margin-top: 3%;
+            }
+            .book-detail-new-degree-intro{
+                position: absolute;
+                margin-top: 2%;
+
+                right: 24px;
+                border-radius: 4px;
+                border: 1px solid #0062FF;
+                Text{
+                    // position: absolute;
+                    // top: 50%;
+                    // transform: translateY(-50%);
+                    display: block;
+                    height: 100%;
+                    line-height: 100%;
+                    font-size: 22px;
+                    font-weight: 400;
+                    color: #0062FF;
+                    margin: 3px 9px;
+                }
+            }
+            .book-detail-basic{
+                margin-top: 2%;
+
+                .book-detail-basic-info{
+                    margin-bottom: 4px;
+                    font-size: 28px;
+                    font-weight: 400;
+                    color: #333333;
+                }
+            }
+            .book-detail-new-degree-choose-btns{
+                margin-top: 6%;
+
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                
+                .at-tag--active{
+                    background: #307EFC;
+                }
+            }
+        }
+    }
+    .book-detail-toolbar-outer{
+        width: 100%;
+        height: 96px;
+        position: fixed;
+        bottom: 26px;
+        background-color: white;
+        .book-detail-toolbar{
+            width: 100%;
+            height: 96px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .book-detail-gocart{
+                box-sizing: border-box;
+                margin: 0 40px 0 46px;
+                width: 68px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                .book-detail-gocart-icon{
+                    width: 38px;
+                    height: 38px;
+                }
+                Text{
+                    font-size: 22px;
+                    color: #6D6D6D;
+                }
+            }
+            .book-detail-btn{
+                width: 260px;
+                height: 68px;
+                color: white;
+                font-size: 32px;
+                font-weight: 550;
+                background: linear-gradient(225deg, #FFA40F 0%, #FFCF33 100%);
+                border-radius: 34px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-right: 34px;
+                box-sizing: border-box;
+            }
+        }
+    }
+}
