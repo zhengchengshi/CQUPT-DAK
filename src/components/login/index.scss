@@ -23,6 +23,26 @@
             height: 140px;
         }
     }
+    .login-authorization-btn{
+        width: 622px;
+        height: 78px;
+        background: #39CF18;
+        border-radius: 20px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        font-size: 28px;
+        font-weight: 400;
+        color: #FFFFFF;
+        .login-authorization-icon{
+            width: 46px;
+            height: 46px;
+            margin-left: 134px;
+        }
+        Text{
+            margin-left: 28px;
+        }
+    }
     .login-student-number{
         width: 622px;
         height: 78px;

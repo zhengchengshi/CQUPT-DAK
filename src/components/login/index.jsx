@@ -122,7 +122,7 @@ export default function Login() {
                 </View>
                 {
                     verify?
-                    <View onClick={authorization} style={{margin:'100px auto 0 auto',width:'fit-content',border:'1px solid'}}>临时授权按钮</View>
+                    <View onClick={authorization} className="login-authorization-btn"><Image src='https://s1.ax1x.com/2022/05/02/OPThNV.png' className='login-authorization-icon'></Image><Text>点击跳转微信授权登录</Text></View>
                     :
                     <View>
                         <Input

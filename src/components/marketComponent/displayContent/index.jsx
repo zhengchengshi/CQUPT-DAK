@@ -68,7 +68,7 @@ export default function DisplayContent() {
             // if(valve===1)
             setAllGoods([...allGoods])
             setCheckState('market')
-            api.get('/market/search',{keyword:'',page:'1'})
+            api.get('/market/search',{keyword:"",page:'1',seed:''})
                 .then(res=>{
                     if(res.statusCode!==500){
                         console.log(res.data.data)

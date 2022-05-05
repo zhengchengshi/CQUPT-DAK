@@ -76,7 +76,7 @@ export default function SearchResult() {
         // 防止初次请求时搜索的内容未更新(即搜索内容为初始化的字符串)
         if(iptValue!=='__init__'){
             if(flag==='market'){
-                api.get('/market/search',{keyword:iptValue,page:"1"})
+                api.get('/market/search',{keyword:iptValue,page:"1",seed:""})
                     .then(res=>{
                         console.log(iptValue)
                         if(res.data.data!==''){

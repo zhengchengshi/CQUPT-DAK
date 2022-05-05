@@ -102,7 +102,7 @@ export default function Chat() {
             console.log(goodInfo.goods_id)
             console.log(goodInfo.entityType)
             console.log(goodInfo.owner.uid)
-            Taro.setNavigationBarTitle({title:goodInfo.owner.name})
+            Taro.setNavigationBarTitle({title:goodInfo.owner.realName})
             // 遍历所有会话列表，判断是否为首次通信
             for(let i = messageList.length - 1;i>=0;i--){
                 // 使用实体类型+商品id+商家id作为判断条件，没有结果则表明为首次聊天
@@ -157,7 +157,6 @@ export default function Chat() {
     },[])
     // 接收到消息，重新请求消息列表，并强制更新视图层，使会话置底
     useEffect(async()=>{
-        console.log()
         if(currentMessage.fromUser&&basicInfo.owner)
         // 临时模拟currentMessage.fromUser.uid为3 临时uid为3
         if(currentMessage.fromUser.uid===basicInfo.owner.uid||currentMessage.fromUser.uid===3){
