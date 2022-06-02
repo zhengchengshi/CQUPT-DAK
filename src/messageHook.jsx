@@ -9,11 +9,12 @@ import { useState } from 'react'
 export default function messageHook() {
     const dispatch = useDispatch()
     useEffect(()=>{
-        
         // socket连接
+        const token = Taro.getStorageSync('access_token')
         Taro.connectSocket({
             url: 'wss://be-prod.chongyouyizhan.xyz/chat',
-            protocols: [Taro.getStorageSync('access_token')]
+            protocols: [token],
+            success:(res)=>{console.log(res)}
         })
         .then(res=>{
             console.log(res)
@@ -21,6 +22,15 @@ export default function messageHook() {
 
         Taro.onSocketOpen((res)=>{
             console.log(res)
+            
+            setInterval(()=>{
+                Taro.sendSocketMessage({
+                    data:'ping',
+                    complete:(res)=>{
+                        console.log(res)
+                    }
+                })
+            },50*1000)
         })
         
         Taro.onSocketError(function (res){
@@ -31,8 +41,8 @@ export default function messageHook() {
         // 第二种是收到的所有消息
         // 第三种是用户发送消息给他人，返回的消息（对象）
         Taro.onSocketMessage(function (res) {
-            console.log(JSON.parse(res.data))
-            const messageObj = JSON.parse(res.data)
+            // console.log(JSON.parse(res.data))
+            const messageObj = res.data==='pong'?'pong':JSON.parse(res.data)
             // 判断服务器返回的是数组还是对象，防止报错
             if(Array.isArray(messageObj)){
                 // 接收第一种消息

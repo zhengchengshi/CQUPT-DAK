@@ -157,33 +157,37 @@ export default function Chat() {
     },[])
     // 接收到消息，重新请求消息列表，并强制更新视图层，使会话置底
     useEffect(async()=>{
-        if(currentMessage.fromUser&&basicInfo.owner)
-        // 临时模拟currentMessage.fromUser.uid为3 临时uid为3
-        if(currentMessage.fromUser.uid===basicInfo.owner.uid||currentMessage.fromUser.uid===3){
-            console.log(allMessages)
-            console.log(currentMessage)
-            // 判断是否为初次聊天，初次聊天没有会话id，需要使用服务器返回的会话id，初次进入会话如果聊过天可直接使用会话id
-            const conversationId = currentConversationId?currentConversationId:currentMessage.conversationId
-            // const messages = await api.get(`/message/list/${conversationId}`)
-            // console.log(messages)
-            // setAllMessages(messages.data.data.reverse())
-            setAllMessages([...allMessages,currentMessage])
-            // 强制更新视图层... T_T
-            setToBottom(toBottom-1)
-
-            // 设置全部消息已读
-            await api.post('/message/read',{conversationId:currentConversationId,targetId:basicInfo.owner.uid})
-            .then(res=>{
-                console.log(res)
-            })
-            .catch(err=>{
-                console.log(err)
-            })
-
-            // Taro.showToast({
-            //     title:'你有一条新消息',
-            //     icon:'none'
-            // })
+        if(currentMessage.fromUser&&basicInfo.owner){
+            console.log(currentMessage.fromUser.uid,basicInfo.owner.uid)
+            // 临时模拟currentMessage.fromUser.uid为3 临时uid为3
+            if(currentMessage.fromUser.uid!==basicInfo.owner.uid){
+            // if(currentMessage.fromUser.uid===basicInfo.owner.uid||currentMessage.fromUser.uid===3){
+    
+                console.log(allMessages)
+                console.log(currentMessage)
+                // 判断是否为初次聊天，初次聊天没有会话id，需要使用服务器返回的会话id，初次进入会话如果聊过天可直接使用会话id
+                const conversationId = currentConversationId?currentConversationId:currentMessage.conversationId
+                // const messages = await api.get(`/message/list/${conversationId}`)
+                // console.log(messages)
+                // setAllMessages(messages.data.data.reverse())
+                setAllMessages([...allMessages,currentMessage])
+                // 强制更新视图层... T_T
+                setToBottom(toBottom-1)
+    
+                // 设置全部消息已读
+                await api.post('/message/read',{conversationId:currentConversationId,targetId:basicInfo.owner.uid})
+                .then(res=>{
+                    console.log(res)
+                })
+                .catch(err=>{
+                    console.log(err)
+                })
+    
+                // Taro.showToast({
+                //     title:'你有一条新消息',
+                //     icon:'none'
+                // })
+            }
         }
     },[currentMessage])
 
