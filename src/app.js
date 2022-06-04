@@ -1,10 +1,9 @@
-import React,{ Component, useEffect } from 'react'
-import './app.scss'
-import Taro from '@tarojs/taro'
-import api from './service/api'
+import React from 'react'
 import { Provider } from 'react-redux'
-import store from './redux/store'
+import './app.scss'
+import store from './redux/store';
 import MessageHook from './messageHook'
+
 export const UrlContext = React.createContext('')
 
 export default function App(props) {
