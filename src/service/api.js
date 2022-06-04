@@ -1,8 +1,8 @@
+import Taro from '@tarojs/taro'
 import { baseUrl } from '../config'
 import { HTTP_STATUS } from '../constant/status'
 import { logError } from '../utils/error.js'
-import interceptors from './interceptors.js'
-import Taro from '@tarojs/taro'
+
 export default {
     baseOption(params,method='GET'){
         let { url, data } = params

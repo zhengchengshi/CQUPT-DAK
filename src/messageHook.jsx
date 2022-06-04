@@ -1,12 +1,11 @@
-import React from 'react'
-import { View } from '@tarojs/components'
 import Taro from '@tarojs/taro'
-import { storageMessageList,selectMessageList } from './messageListSlice'
-import { useDispatch,useSelector } from 'react-redux'
-import { storageCurrentMessage } from './currentMessageSlice'
+import { useDispatch } from 'react-redux'
+import { View } from '@tarojs/components'
 import { useEffect } from 'react'
-import { useState } from 'react'
-export default function messageHook() {
+import { storageMessageList } from './messageListSlice'
+import { storageCurrentMessage } from './currentMessageSlice'
+
+export default function MessageHook() {
     const dispatch = useDispatch()
     useEffect(()=>{
         // socket连接
@@ -26,14 +25,14 @@ export default function messageHook() {
             setInterval(()=>{
                 Taro.sendSocketMessage({
                     data:'ping',
-                    complete:(res)=>{
-                        console.log(res)
+                    complete:(val)=>{
+                        console.log(val)
                     }
                 })
             },50*1000)
         })
         
-        Taro.onSocketError(function (res){
+        Taro.onSocketError(function (){
             console.log('WebSocket连接打开失败，请检查！')
         })
         // 接收到服务器的消息有三种

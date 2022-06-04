@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { View,Text,Editor,Image,Input } from '@tarojs/components';
-import Taro,{ useDidShow } from '@tarojs/taro';
+import Taro from '@tarojs/taro';
+import { useEffect,  useState } from 'react';
+import { View,Text,Editor,Input } from '@tarojs/components';
 import { AtImagePicker } from 'taro-ui'
-import './index.scss'
 import api from '../../../../service/api';
+import './index.scss'
+
 export default function GoodPost() {
     const [editorCtx,setEditorCtx] = useState({})
     const [textLength,setTextLength] = useState(0)
@@ -11,7 +12,7 @@ export default function GoodPost() {
     const [iptContent,setIptContent] = useState('')
     const [allImgs,setAllImgs] = useState([])
     const [eventValve,setEventValve] = useState(0)
-    const [judgeResArr,setJudgeResArr] = useState([])
+    const [judgeResArr] = useState([])
     const [goodPrice,setgoodPrice] = useState()
     const editorReady = () =>{
         Taro.createSelectorQuery().select('#editor').context((res) => {
@@ -21,6 +22,7 @@ export default function GoodPost() {
     }
     useEffect(()=>{
         if(eventValve===0){
+            console.log(editorCtx)
             setEventValve(1)
         }
     },[judgeResArr])
@@ -98,7 +100,6 @@ export default function GoodPost() {
         console.log(allImgs);
         console.log(goodPrice);
         console.log(iptContent);
-        console.log(title);
         const title = iptContent.substring(0,16);
         Taro.showLoading({
             mask:true,
@@ -110,9 +111,9 @@ export default function GoodPost() {
             for(let i=0;i<allImgs.length;i++){
                 const token = await api.get('/picture/upload-token')
                     .then(res=>{
-                            const token = res.data.data.token
-                            console.log(token)
-                            return token
+                            const innertoken = res.data.data.token
+                            console.log(innertoken)
+                            return innertoken
                         })
                 await Taro.uploadFile({
                     url:'https://up-z2.qiniup.com',
@@ -190,7 +191,7 @@ export default function GoodPost() {
         
     },[judgeResArr])
     // 选择图片
-    const chooseImg = (files,operationType)=>{
+    const chooseImg = (files)=>{
         setAllImgs([...files])
         console.log(files )
     }
@@ -248,12 +249,12 @@ export default function GoodPost() {
                             // })
                         }
                         <AtImagePicker
-                                files={allImgs}
-                                onChange={chooseImg}
-                                length={3}
-                                count={9-allImgs.length}
-                                multiple
-                            />
+                          files={allImgs}
+                          onChange={chooseImg}
+                          length={3}
+                          count={9-allImgs.length}
+                          multiple
+                        />
                         {
                             // allImgs.length===0?
                             // <AtImagePicker
