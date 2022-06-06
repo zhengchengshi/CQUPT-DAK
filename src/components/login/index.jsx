@@ -108,6 +108,22 @@ export default function Login() {
                 throw err;
             })
     }
+    const testEntry = ()=>{
+        (async ()=>{
+            const testToken = await api.get('/login-center/app/getTestToken')
+                .then(res=>{
+                    return res;
+                })
+            // 登录成功，退出登录界面,进入首页
+            dispatch(storageVerifyState(false))
+            console.log(testToken.data.data.access_token)
+            console.log(testToken.data.data.refresh_token)
+            // 存储token
+            Taro.setStorageSync('access_token',testToken.data.data.access_token)
+            Taro.setStorageSync('refresh_token',testToken.data.data.refresh_token)
+        })()
+        
+    }
     return (
         <View>
             <View className='login-outer'>
@@ -158,6 +174,8 @@ export default function Login() {
                     <View className='login-step'>(1/2)</View>
                 }
                 <View className='login-direct'>已注册，直接<Text onClick={directLogin}>微信授权登录</Text></View>
+                <View style={{backgroundColor:'orange',textAlign:'center'}} onClick={testEntry}>测试入口</View>
+
             </View>
         </View>
     )
