@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { View,Text,Image } from '@tarojs/components'
-import Taro, {useDidShow} from '@tarojs/taro'
-
-import './index.scss'
 import { AtInputNumber } from 'taro-ui'
+import { useEffect, useState } from 'react'
+import { View,Text,Image } from '@tarojs/components'
+import Taro from '@tarojs/taro'
 import api from '../../../../service/api'
+import './index.scss'
+
 export default function Cart() {
     const [allCartBooks,setAllCartBooks] = useState([])
     const [checkStateArr,setCheckStateArr] = useState([])
@@ -267,7 +267,7 @@ export default function Cart() {
                     {
                         allCartBooks.map((item,index)=>{
                             return (
-                                <View className='cart-item' onClick={goDetail(index)}>
+                                <View className='cart-item' onClick={goDetail(index)} key={index}>
                                     <View className='cart-delete-btn'>
                                         {
                                             checkStateArr[index]?
@@ -295,8 +295,8 @@ export default function Cart() {
                                             </View>
                                             <View className='cart-item-goodnum'>
                                                 <AtInputNumber
-                                                    onChange={setNum(index)}
-                                                    value={goodsNum[index]}
+                                                  onChange={setNum(index)}
+                                                  value={goodsNum[index]}
                                                 ></AtInputNumber>
                                             </View>
                                         </View>

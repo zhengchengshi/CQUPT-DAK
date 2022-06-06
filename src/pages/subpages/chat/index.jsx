@@ -1,16 +1,17 @@
-import React, { useEffect,useRef,useState } from 'react'
+import { useSelector } from 'react-redux'
+import  { useEffect,useRef,useState } from 'react'
 import { View,Image,Text,Switch,Input,ScrollView } from '@tarojs/components'
 import Taro , { useDidHide } from '@tarojs/taro'
 import './index.scss'
 import {selectMessageList} from '../../../messageListSlice'
-import { useDispatch, useSelector } from 'react-redux'
 import api from '../../../service/api'
 import { selectCurrentMessage } from '../../../currentMessageSlice'
 import reverseTime from '../../../utils/reverseTime'
 import './index.config'
+
 export default function Chat() {
     // 用于消息传输
-    const pages = getCurrentPages()
+    const pages = Taro.getCurrentPages()
     const current = pages[pages.length - 1]
     const eventChannel = current.getOpenerEventChannel()
     // 会话列表 用于筛选会话号
@@ -70,10 +71,10 @@ export default function Chat() {
     useEffect(()=>{
         // let socketMsgQueue = [
         //     {
-        //         "toId":5,
-        //         "entityType":3,
-        //         "entityId":42,
-        //         "content":"你好uid5"
+        //         'toId':5,
+        //         'entityType':3,
+        //         'entityId':42,
+        //         'content':'你好uid5'
         //     }
         // ]
         // let socketOpen = false
@@ -128,8 +129,8 @@ export default function Chat() {
                         properties: ['scrollX', 'scrollY'],
                         computedStyle: ['margin', 'backgroundColor'],
                         context: true,
-                    }, async(res)=>{
-                        console.log(res)
+                    }, async(val)=>{
+                        console.log(val)
                         console.log(messages)
                         // 修改聊天信息
                         setAllMessages(messages.data.data.reverse())
@@ -139,8 +140,8 @@ export default function Chat() {
                         
                         // 设置全部消息已读
                         await api.post('/message/read',{conversationId:messageList[i].conversationId,targetId:messageList[i].entityInfo.owner.uid})
-                        .then(res=>{
-                            console.log(res)
+                        .then(result=>{
+                            console.log(result)
                         })
                         .catch(err=>{
                             console.log(err)
@@ -156,35 +157,42 @@ export default function Chat() {
         })
     },[])
     // 接收到消息，重新请求消息列表，并强制更新视图层，使会话置底
-    useEffect(async()=>{
-        if(currentMessage.fromUser&&basicInfo.owner)
-        // 临时模拟currentMessage.fromUser.uid为3 临时uid为3
-        if(currentMessage.fromUser.uid===basicInfo.owner.uid||currentMessage.fromUser.uid===3){
-            console.log(allMessages)
-            console.log(currentMessage)
-            // 判断是否为初次聊天，初次聊天没有会话id，需要使用服务器返回的会话id，初次进入会话如果聊过天可直接使用会话id
-            const conversationId = currentConversationId?currentConversationId:currentMessage.conversationId
-            // const messages = await api.get(`/message/list/${conversationId}`)
-            // console.log(messages)
-            // setAllMessages(messages.data.data.reverse())
-            setAllMessages([...allMessages,currentMessage])
-            // 强制更新视图层... T_T
-            setToBottom(toBottom-1)
-
-            // 设置全部消息已读
-            await api.post('/message/read',{conversationId:currentConversationId,targetId:basicInfo.owner.uid})
-            .then(res=>{
-                console.log(res)
-            })
-            .catch(err=>{
-                console.log(err)
-            })
-
-            // Taro.showToast({
-            //     title:'你有一条新消息',
-            //     icon:'none'
-            // })
-        }
+    useEffect(()=>{
+        (async ()=>{
+            if(currentMessage.fromUser&&basicInfo.owner){
+                console.log(currentMessage.fromUser.uid,basicInfo.owner.uid)
+                // 临时模拟currentMessage.fromUser.uid为3 临时uid为3
+                if(currentMessage.fromUser.uid!==basicInfo.owner.uid){
+                // if(currentMessage.fromUser.uid===basicInfo.owner.uid||currentMessage.fromUser.uid===3){
+        
+                    console.log(allMessages)
+                    console.log(currentMessage)
+                    // 判断是否为初次聊天，初次聊天没有会话id，需要使用服务器返回的会话id，初次进入会话如果聊过天可直接使用会话id
+                    // const conversationId = currentConversationId?currentConversationId:currentMessage.conversationId
+                    // const messages = await api.get(`/message/list/${conversationId}`)
+                    // console.log(messages)
+                    // setAllMessages(messages.data.data.reverse())
+                    setAllMessages([...allMessages,currentMessage])
+                    // 强制更新视图层... T_T
+                    setToBottom(toBottom-1)
+        
+                    // 设置全部消息已读
+                    await api.post('/message/read',{conversationId:currentConversationId,targetId:basicInfo.owner.uid})
+                    .then(res=>{
+                        console.log(res)
+                    })
+                    .catch(err=>{
+                        console.log(err)
+                    })
+        
+                    // Taro.showToast({
+                    //     title:'你有一条新消息',
+                    //     icon:'none'
+                    // })
+                }
+            }
+        })()
+        
     },[currentMessage])
 
     const sendMessage = ()=>{
@@ -192,10 +200,10 @@ export default function Chat() {
         console.log(basicInfo)
         // 消息内容
         const msg = JSON.stringify({
-            "toId":basicInfo.owner.uid,
-            "entityType":basicInfo.entityType,
-            "entityId":basicInfo.goods_id,
-            "content":`${inputRef.current.value}`
+            'toId':basicInfo.owner.uid,
+            'entityType':basicInfo.entityType,
+            'entityId':basicInfo.goods_id,
+            'content':`${inputRef.current.value}`
         })
         // 发送消息
         Taro.sendSocketMessage({
@@ -217,10 +225,10 @@ export default function Chat() {
             success:  async(res) => {
                 console.log(res.tempFilePaths[0])
                 const token = await api.get('/picture/upload-token')
-                    .then(res=>{
-                            const token = res.data.data.token
-                            console.log(token)
-                            return token
+                    .then(val=>{
+                            const innerToken = val.data.data.token
+                            console.log(innerToken)
+                            return innerToken
                         })
                 await Taro.uploadFile({
                     url:'http://up-z2.qiniup.com',
@@ -230,20 +238,20 @@ export default function Chat() {
                         token:token,
                         file:res.tempFilePaths[0]
                     },
-                    success:(res)=>{
-                        const hashString = JSON.parse(res.data).hash
+                    success:(val)=>{
+                        const hashString = JSON.parse(val.data).hash
                         console.log(hashString)
                         const msg = JSON.stringify({
-                            "toId":basicInfo.owner.uid,
-                            "entityType":basicInfo.entityType,
-                            "entityId":basicInfo.goods_id,
-                            "content":`__image__http://cdn.chongyouyizhan.xyz/${hashString}`
+                            'toId':basicInfo.owner.uid,
+                            'entityType':basicInfo.entityType,
+                            'entityId':basicInfo.goods_id,
+                            'content':`__image__http://cdn.chongyouyizhan.xyz/${hashString}`
                         })
                         // 发送消息
                         Taro.sendSocketMessage({
                             data:msg,
-                            complete:(res)=>{
-                                console.log(res)
+                            complete:(message)=>{
+                                console.log(message)
                             }
                         })
                     }
@@ -286,35 +294,35 @@ export default function Chat() {
     return (
         <View>
             <View className='chat-outer'>
-                {/* <View className="chat-header-outer">
-                    <View className="chat-header">
+                {/* <View className='chat-header-outer'>
+                    <View className='chat-header'>
                         <Image src='https://s4.ax1x.com/2022/03/03/bG7UaQ.png' className='chat-header-btn'></Image>
                         <Text>
                             18-网络信息安全与信息法-赵…
                         </Text>
                     </View>
                 </View> */}
-                {/* <View className="chat-goodinfo-outer"> */}
+                {/* <View className='chat-goodinfo-outer'> */}
                 
-                    <View className="chat-goodinfo">
-                        <View className="chat-goodinfo-left">
+                    <View className='chat-goodinfo'>
+                        <View className='chat-goodinfo-left'>
                             <Image src={basicInfo.images&&basicInfo.images.length!==0?basicInfo.images[0].medium:''} mode='aspectFill'></Image>
                         </View>
-                        <View className="chat-goodinfo-right">
-                            <View className="chat-goodinfo-title">
+                        <View className='chat-goodinfo-right'>
+                            <View className='chat-goodinfo-title'>
                                 {basicInfo.title}
                             </View>
-                            <View className="chat-goodinfo-secondline">
-                                <Text className="price">
+                            <View className='chat-goodinfo-secondline'>
+                                <Text className='price'>
                                     ¥{basicInfo.price}
                                 </Text>
-                                <View className="chat-goodinfo-operate">
+                                <View className='chat-goodinfo-operate'>
                                     <Text>
                                         标记为已出售给他
                                     </Text>
                                     <Switch
-                                        color="#0062FF"
-                                        onChange={saleBtnChange}
+                                      color='#0062FF'
+                                      onChange={saleBtnChange}
                                     ></Switch>
 
                                 </View>
@@ -323,31 +331,31 @@ export default function Chat() {
                     </View>
                 {/* </View> */}
                 <ScrollView 
-                    className="chat-content"
-                    scrollY
-                    scrollWithAnimation={controlScrollWithAnimation}
-                    scrollTop={toBottom}
+                  className='chat-content'
+                  scrollY
+                  scrollWithAnimation={controlScrollWithAnimation}
+                  scrollTop={toBottom}
                 >
 
                 {
                     // 对方发来的消息，使用商品/订单主人id和消息列表中id进行判断是对方消息还是自己消息
-                    allMessages.map((item,index)=>{
+                    allMessages.map((item)=>{
                         // 这里的判断条件等登录写完修改 是错误的
                         // 要用用户自己的uid和fromUser.uid进行判断
                         if(basicInfo.owner.uid===item.fromUser.uid){
                             return(
-                                <View className="chat-content-others">
-                                    <View className="chat-content-time">
+                                <View className='chat-content-others'>
+                                    <View className='chat-content-time'>
                                         {
                                             reverseTime(item.createTime)
                                         }
                                     </View>
-                                    <View className="chat-content-others-message">
-                                        <View className="chat-content-others-message-left">
-                                            <Image src='https://jdc.jd.com/img/200' className="chat-content-others-message-avator"></Image>
+                                    <View className='chat-content-others-message'>
+                                        <View className='chat-content-others-message-left'>
+                                            <Image src='https://jdc.jd.com/img/200' className='chat-content-others-message-avator'></Image>
                                         </View>
-                                        <View className="chat-content-others-message-right">
-                                            <View className="chat-content-others-bubble">
+                                        <View className='chat-content-others-message-right'>
+                                            <View className='chat-content-others-bubble'>
                                                 {
                                                     item.content.includes('__image__')?
                                                     <Image src={item.content.substring(9)} onClick={goImageDetail(item.content.substring(9))}></Image>
@@ -355,7 +363,7 @@ export default function Chat() {
                                                     item.content
                                                 }
                                             </View>
-                                            <View className="chat-content-others-message-state">
+                                            <View className='chat-content-others-message-state'>
                                                 {/* 此界面内对方的消息任何情况都已读 */}
                                                 已读
 
@@ -374,15 +382,15 @@ export default function Chat() {
                         }
                         else{
                             return(
-                                <View className="chat-content-mine">
-                                    <View className="chat-content-time">
+                                <View className='chat-content-mine'>
+                                    <View className='chat-content-time'>
                                         {
                                             reverseTime(item.createTime)
                                         }
                                     </View>
-                                    <View className="chat-content-my-message">
-                                        <View className="chat-content-my-message-left">
-                                            <View className="chat-content-my-bubble">
+                                    <View className='chat-content-my-message'>
+                                        <View className='chat-content-my-message-left'>
+                                            <View className='chat-content-my-bubble'>
                                                 {
                                                     item.content.includes('__image__')?
                                                     <Image src={item.content.substring(9)} onClick={goImageDetail(item.content.substring(9))}></Image>
@@ -390,7 +398,7 @@ export default function Chat() {
                                                     item.content
                                                 }
                                             </View>
-                                            <View className="chat-content-my-message-state">
+                                            <View className='chat-content-my-message-state'>
                                                 {
                                                     item.status===1?
                                                     '已读'
@@ -399,8 +407,8 @@ export default function Chat() {
                                                 }
                                             </View>
                                         </View>
-                                        <View className="chat-content-my-message-right">
-                                            <Image src='https://jdc.jd.com/img/200' className="chat-content-my-message-avator"></Image>
+                                        <View className='chat-content-my-message-right'>
+                                            <Image src='https://jdc.jd.com/img/200' className='chat-content-my-message-avator'></Image>
                                         </View>
                                     </View>
                                 </View>
@@ -415,60 +423,60 @@ export default function Chat() {
                     
                     
                     
-                    {/* <View className="chat-content-my-message">
-                        <View className="chat-content-time">
+                    {/* <View className='chat-content-my-message'>
+                        <View className='chat-content-time'>
                             11-24 12:43
                         </View>
-                        <View className="chat-content-my-message">
-                            <View className="chat-content-my-message-left">
-                                <View className="chat-content-my-bubble">
+                        <View className='chat-content-my-message'>
+                            <View className='chat-content-my-message-left'>
+                                <View className='chat-content-my-bubble'>
                                     <Image src='https://s1.ax1x.com/2022/04/03/q7o39K.png' mode='aspectFill'></Image>
                                 </View>
-                                <View className="chat-content-my-message-state">
+                                <View className='chat-content-my-message-state'>
                                     已读
                                 </View>
                             </View>
-                            <View className="chat-content-my-message-right">
-                                <Image src='https://jdc.jd.com/img/200' className="chat-content-my-message-avator"></Image>
+                            <View className='chat-content-my-message-right'>
+                                <Image src='https://jdc.jd.com/img/200' className='chat-content-my-message-avator'></Image>
                             </View>
                         </View>
                     </View> */}
                 </ScrollView>
-                <View className="chat-sticky-toolbox-outer">
-                    <View className="chat-sticky-toolbox">
+                <View className='chat-sticky-toolbox-outer'>
+                    <View className='chat-sticky-toolbox'>
                         <Image src='https://s1.ax1x.com/2022/04/02/qoHBNt.png' className='chat-sticky-toolbox-camera-btn' onClick={sendPhoto}></Image>
                         {/* 受控组件 */}
                         <Input 
-                            className="chat-sticky-toolbox-input" 
-                            placeholder='聊点什么呢'
-                            ref={inputRef}
-                            onConfirm={sendMessage}
+                          className='chat-sticky-toolbox-input' 
+                          placeholder='聊点什么呢'
+                          ref={inputRef}
+                          onConfirm={sendMessage}
                             // adjust-position={false}
                             // holdKeyboard={true}
                             // onFocus={inputFocus}
                             // onBlur={inputBlur}
                         >
-                            {/* <KeyboardAccessory className="chat-sticky-toolbox-inner-outer">
-                                <CoverView className="chat-sticky-toolbox-inner">
+                            {/* <KeyboardAccessory className='chat-sticky-toolbox-inner-outer'>
+                                <CoverView className='chat-sticky-toolbox-inner'>
                                     <CoverImage src='https://s1.ax1x.com/2022/04/02/qoHBNt.png' className='chat-sticky-toolbox-camera-btn-inner'></CoverImage> */}
                                     {/* 模拟输入框 */}
-                                    {/* <CoverView className="chat-sticky-toolbox-input-inner"> */}
+                                    {/* <CoverView className='chat-sticky-toolbox-input-inner'> */}
                                         {/* {inputContent} */}
                                     {/* </CoverView>
-                                    <CoverView className="chat-sticky-toolbox-send-btn-inner">
+                                    <CoverView className='chat-sticky-toolbox-send-btn-inner'>
                                         发送
                                     </CoverView>
                                 </CoverView>
                             </KeyboardAccessory> */}
                         </Input>
-                        <View className="chat-sticky-toolbox-send-btn" onClick={sendMessage}>
+                        <View className='chat-sticky-toolbox-send-btn' onClick={sendMessage}>
                             发送
                         </View>
                     </View>
                 </View>
             </View>
             {/* <Textarea holdKeyboard className='chat-sticky-toolbox'>
-            <KeyboardAccessory className="container" style={{ height: '50px',width:'100%' }} >
+            <KeyboardAccessory className='container' style={{ height: '50px',width:'100%' }} >
                         </KeyboardAccessory>
             </Textarea> */}
         </View>

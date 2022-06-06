@@ -3,6 +3,7 @@ import checkStateSliceReducer from '../components/marketComponent/header/checkSt
 import messageListSliceReducer from '../messageListSlice'
 import currentMessageSliceReducer from '../currentMessageSlice'
 import verifyStateReducer from '../components/login/verifySlice'
+
 const store = configureStore({
     reducer:{
         checkState:checkStateSliceReducer,

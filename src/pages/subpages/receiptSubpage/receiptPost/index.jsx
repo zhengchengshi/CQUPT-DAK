@@ -1,18 +1,17 @@
-import React from 'react'
-import { View,Image,Input,Textarea } from '@tarojs/components'
-import './index.scss'
-import { AtForm,AtButton,AtTextarea,AtImagePicker } from 'taro-ui'
-import { useState } from 'react'
-import { useRef } from 'react'
+import { View,Image,Input } from '@tarojs/components'
+import { useState,useRef } from 'react'
+import { AtTextarea,AtImagePicker } from 'taro-ui'
 import Taro from '@tarojs/taro'
 import api from '../../../../service/api'
+import './index.scss'
+
 export default function ReceiptPost() {
     const [allImgs,setAllImgs] = useState([])
     const iptTitle = useRef('')
     const iptPrice = useRef('')
     const [iptDetail,setIptDetail] = useState('')
 
-    const chooseImg = (files,operationType)=>{
+    const chooseImg = (files)=>{
         setAllImgs([...files])
         console.log(files )
     }
@@ -31,7 +30,7 @@ export default function ReceiptPost() {
         }
         Taro.showLoading({
             mask:true,
-            title:"图片上传中"
+            title:'图片上传中'
         });
         (async()=>{
             const imgUrlArr = [];
@@ -39,9 +38,9 @@ export default function ReceiptPost() {
             for(let i=0;i<allImgs.length;i++){
                 const token = await api.get('/picture/upload-token')
                     .then(res=>{
-                            const token = res.data.data.token
-                            console.log(token)
-                            return token
+                            const innertoken = res.data.data.token
+                            console.log(innertoken)
+                            return innertoken
                         })
                 await Taro.uploadFile({
                     url:'https://up-z2.qiniup.com',
@@ -82,34 +81,34 @@ export default function ReceiptPost() {
     }
     return (
         <View>
-            <View className="receiptPost-header">
+            <View className='receiptPost-header'>
                 发单
             </View>
-            <View className="receiptPost-content">
+            <View className='receiptPost-content'>
                 <Image src='https://s1.ax1x.com/2022/03/29/qcK3KP.png' className='receiptPost-formdata-content-shadow'></Image>
-                <View className="receiptPost-formdata">
-                    <View className="receiptPost-formdata-content">
-                        <View className="receiptPost-formdata-content-item">标题 <Image src='https://s1.ax1x.com/2022/03/29/qcug1I.png' className='receiptPost-formdata-content-item-required'></Image></View>
-                        <View className="receiptPost-formdata-content-item"><Input ref={iptTitle}></Input></View>
-                        <View className="receiptPost-formdata-content-item">预估价格</View>
-                        <View className="receiptPost-formdata-content-item">￥<Input ref={iptPrice}></Input></View>
-                        <View className="receiptPost-formdata-content-item">详情</View>
-                        <View className="receiptPost-formdata-content-item">
+                <View className='receiptPost-formdata'>
+                    <View className='receiptPost-formdata-content'>
+                        <View className='receiptPost-formdata-content-item'>标题 <Image src='https://s1.ax1x.com/2022/03/29/qcug1I.png' className='receiptPost-formdata-content-item-required'></Image></View>
+                        <View className='receiptPost-formdata-content-item'><Input ref={iptTitle}></Input></View>
+                        <View className='receiptPost-formdata-content-item'>预估价格</View>
+                        <View className='receiptPost-formdata-content-item'>￥<Input ref={iptPrice}></Input></View>
+                        <View className='receiptPost-formdata-content-item'>详情</View>
+                        <View className='receiptPost-formdata-content-item'>
                             <AtTextarea
-                                placeholder='请填写发单详情'
-                                height='220'
-                                onChange={detailChange}
-                                value={iptDetail}
+                              placeholder='请填写发单详情'
+                              height='220'
+                              onChange={detailChange}
+                              value={iptDetail}
                             ></AtTextarea>
                         </View>
                     </View>
-                    <View className="receiptPost-formdata-images">
+                    <View className='receiptPost-formdata-images'>
                         <AtImagePicker
-                            files={allImgs}
-                            onChange={chooseImg}
-                            length={3}
-                            count={3-allImgs.length}
-                            multiple
+                          files={allImgs}
+                          onChange={chooseImg}
+                          length={3}
+                          count={3-allImgs.length}
+                          multiple
                         />
                     </View>
 
@@ -135,8 +134,8 @@ export default function ReceiptPost() {
                     />
                 </AtForm> */}
                 </View>
-                <View formType='submit' onClick={submit} className="receiptPost-addPhotos">发送</View>
-                {/* <View className="receiptPost-addPhotos" onClick={submit}>
+                <View formType='submit' onClick={submit} className='receiptPost-addPhotos'>发送</View>
+                {/* <View className='receiptPost-addPhotos' onClick={submit}>
                     发送
                 </View> */}
             </View>
