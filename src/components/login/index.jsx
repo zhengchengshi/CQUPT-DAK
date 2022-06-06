@@ -1,11 +1,11 @@
-import React, { useEffect, useRef } from 'react'
+import Taro from '@tarojs/taro';
+import { useDispatch } from 'react-redux';
+import { useEffect,useState } from 'react'
 import { View,Image,Input,Text, Button } from '@tarojs/components'
 import './index.scss'
 import api from '../../service/api';
-import Taro from '@tarojs/taro';
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { storageVerifyState } from './verifySlice'
+
 export default function Login() {
     const [studentName,setStudentName] = useState('');
     const [studentNumber,setStudentNumber] = useState('');
@@ -110,54 +110,54 @@ export default function Login() {
     }
     return (
         <View>
-            <View className="login-outer">
+            <View className='login-outer'>
                 {
                     verify?
                     <Image src='https://s1.ax1x.com/2022/04/18/LwNLJx.png' className='login-back-btn' onClick={goBack}></Image>
                     :
                     <></>
                 }
-                <View className="login-background">
-                    <Image src='https://s1.ax1x.com/2022/04/17/LUPhAf.png' className="login-logo"></Image>
+                <View className='login-background'>
+                    <Image src='https://s1.ax1x.com/2022/04/17/LUPhAf.png' className='login-logo'></Image>
                 </View>
                 {
                     verify?
-                    <View onClick={authorization} className="login-authorization-btn"><Image src='https://s1.ax1x.com/2022/05/02/OPThNV.png' className='login-authorization-icon'></Image><Text>点击跳转微信授权登录</Text></View>
+                    <View onClick={authorization} className='login-authorization-btn'><Image src='https://s1.ax1x.com/2022/05/02/OPThNV.png' className='login-authorization-icon'></Image><Text>点击跳转微信授权登录</Text></View>
                     :
                     <View>
                         <Input
-                            className="login-student-number"
-                            placeholder='请输入你的学号'
-                            type="number"
-                            placeholderStyle="color: #A8A8A8;font-weight: 400;font-size: 14px;"
-                            focus
-                            onInput={studentNumberChange}
+                          className='login-student-number'
+                          placeholder='请输入你的学号'
+                          type='number'
+                          placeholderStyle='color: #A8A8A8;font-weight: 400;font-size: 14px;'
+                          focus
+                          onInput={studentNumberChange}
 
                         ></Input>
                         <Input
-                            className="login-student-name"
-                            placeholder='请输入你的真实姓名'
-                            placeholderStyle="color: #A8A8A8;font-weight: 400;font-size: 14px;"
-                            onInput={studentNameChange}
-                            onConfirm={submit}
+                          className='login-student-name'
+                          placeholder='请输入你的真实姓名'
+                          placeholderStyle='color: #A8A8A8;font-weight: 400;font-size: 14px;'
+                          onInput={studentNameChange}
+                          onConfirm={submit}
                         ></Input>
-                        <View className="login-notice">请放心，您的相关数据仅会被用作身份验证，我们将权力保护您的信息安全</View>
+                        <View className='login-notice'>请放心，您的相关数据仅会被用作身份验证，我们将权力保护您的信息安全</View>
                         {
                             controlBtnState?
-                            <Button className="login-btn login-btn-active" onClick={submit}>下一步</Button>
+                            <Button className='login-btn login-btn-active' onClick={submit}>下一步</Button>
                             :
-                            <Button className="login-btn" onClick={submit} disabled>下一步</Button>
+                            <Button className='login-btn' onClick={submit} disabled>下一步</Button>
 
                         }
                     </View>
                 }
                 {
                     verify?
-                    <View className="login-step">(2/2)</View>
+                    <View className='login-step'>(2/2)</View>
                     :
-                    <View className="login-step">(1/2)</View>
+                    <View className='login-step'>(1/2)</View>
                 }
-                <View className="login-direct">已注册，直接<Text onClick={directLogin}>微信授权登录</Text></View>
+                <View className='login-direct'>已注册，直接<Text onClick={directLogin}>微信授权登录</Text></View>
             </View>
         </View>
     )
