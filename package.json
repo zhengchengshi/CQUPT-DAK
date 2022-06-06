@@ -43,6 +43,7 @@
 		"@tarojs/react": "3.4.11",
 		"@tarojs/runtime": "3.4.11",
 		"@tarojs/taro": "3.4.11",
+		"axios": "^0.27.2",
 		"mqtt": "^3.0.0",
 		"pnpm": "^7.1.8",
 		"react": "^17.0.0",
