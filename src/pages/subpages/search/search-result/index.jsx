@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import Taro from '@tarojs/taro';
+import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 import { View,Image,Input,Text } from '@tarojs/components';
-import Taro,{ useDidShow } from '@tarojs/taro';
 import api from '../../../../service/api';
 import { selectCheckState } from '../../../../components/marketComponent/header/checkStateSlice';
-import { useSelector } from 'react-redux';
 import './index.scss'
+
 export default function SearchResult() {
-    const pages = getCurrentPages()
+    const pages = Taro.getCurrentPages()
     const current = pages[pages.length - 1]
     const eventChannel = current.getOpenerEventChannel()
     const [iptValue,setIptValue] = useState('__init__')
@@ -76,7 +77,7 @@ export default function SearchResult() {
         // 防止初次请求时搜索的内容未更新(即搜索内容为初始化的字符串)
         if(iptValue!=='__init__'){
             if(flag==='market'){
-                api.get('/market/search',{keyword:iptValue,page:"1",seed:""})
+                api.get('/market/search',{keyword:iptValue,page:'1',seed:''})
                     .then(res=>{
                         console.log(iptValue)
                         if(res.data.data!==''){
@@ -114,19 +115,19 @@ export default function SearchResult() {
                 <View className='search-result-header'>
                     <View className='search-result-header-searchbox'>
                         <Image src='https://s4.ax1x.com/2022/02/06/Hu44fO.png' className='search-result-header-searchbox-icon'></Image>
-                        <Input type="text" placeholder='请输入想要查询的内容' value={iptValue} onConfirm={gosearch}/>
+                        <Input type='text' placeholder='请输入想要查询的内容' value={iptValue} onConfirm={gosearch}></Input>
                     </View>
                     <Image className='search-result-header-collect-img' src='https://s4.ax1x.com/2022/02/07/HQVNtA.png' onClick={goHomepage}></Image>
                 </View>
             </View>
         </View>
         {
-            flag==="market"?
+            flag==='market'?
             <View className='market-search-result-displaycontent'>
             {   
                 searchContent.map((item,index)=>{
                     return(
-                        <View className='market-search-result-displaycontent-item' onClick={goDetail(index)}>
+                        <View className='market-search-result-displaycontent-item' onClick={goDetail(index)} key={index}>
                             {
                                 judgeStateArr[index]?
                                 <View className='market-search-result-displaycontent-item-img-outer-height-adaptive'>
@@ -137,7 +138,7 @@ export default function SearchResult() {
                                 </View>
                             }
                             {/* <View className='market-search-result-displaycontent-item-img-outer'>
-                                <Image src={item.images[0].medium} className='market-search-result-displaycontent-item-img' mode="widthFix"></Image>
+                                <Image src={item.images[0].medium} className='market-search-result-displaycontent-item-img' mode='widthFix'></Image>
                             </View> */}
                             <View className='market-search-result-displaycontent-item-title'>
                                 <Text>{item.title}</Text>

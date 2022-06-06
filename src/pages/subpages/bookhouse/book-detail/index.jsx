@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { View,Image,Text } from '@tarojs/components';
+import { AtSwitch,AtTag } from 'taro-ui'
+import { Swiper, SwiperItem,View,Image,Text } from '@tarojs/components'
+import { useEffect, useState } from 'react';
 import Taro from '@tarojs/taro';
 import api from '../../../../service/api';
-import { Swiper, SwiperItem } from '@tarojs/components'
-import { AtSwitch,AtTag } from 'taro-ui'
 import './index.scss'
+
 export default function GoodDetail() {
-    const pages = getCurrentPages()
+    const pages = Taro.getCurrentPages()
     const current = pages[pages.length - 1]
     const [judgeStateArr,setJudgeStateArr] = useState([])
     const eventChannel = current.getOpenerEventChannel()
@@ -35,7 +35,7 @@ export default function GoodDetail() {
             api.post('/book/cart',{
                 book_id:bookInfo.book_id,
                 wear:wear,
-                transport:needFreight?"2":"1"
+                transport:needFreight?'2':'1'
             })
             .then(res=>{
                 if(res.data.status===50000){
@@ -210,16 +210,16 @@ export default function GoodDetail() {
             <View className='book-detail-content'>
                 <View className='book-detail-swiper-outer'>
                     <Swiper
-                        className='book-detail-swiper'
-                        circular
-                        displayMultipleItems
-                        onChange={swiperChange}
-                        >
+                      className='book-detail-swiper'
+                      circular
+                      displayMultipleItems
+                      onChange={swiperChange}
+                    >
                             {   
                                 correspondValue.images!==null?
                                 correspondValue.images.map((item,index)=>{
                                     return(
-                                        <SwiperItem>
+                                        <SwiperItem key={index}>
                                             {
                                                 judgeStateArr[index]?
                                                 <View className='book-detail-swiper-item-img-outer-height-adaptive'>
@@ -263,7 +263,7 @@ export default function GoodDetail() {
                             <View className='book-detail-bringUp'>
                                 <Text>校内书屋自提</Text>
                                 <AtSwitch
-                                    onChange={changeBringUpState}
+                                  onChange={changeBringUpState}
                                 ></AtSwitch>
                             </View>
                     </View>
@@ -286,28 +286,28 @@ export default function GoodDetail() {
                     </View>
                     <View className='book-detail-new-degree-choose-btns'>
                             <AtTag
-                                type='primary' 
-                                active={tagCheckState[0]}
-                                circle
-                                onClick={changeTagState(0)}
+                              type='primary' 
+                              active={tagCheckState[0]}
+                              circle
+                              onClick={changeTagState(0)}
                             >全新</AtTag>
                             <AtTag
-                                type='primary' 
-                                active={tagCheckState[1]}
-                                circle
-                                onClick={changeTagState(1)}
+                              type='primary' 
+                              active={tagCheckState[1]}
+                              circle
+                              onClick={changeTagState(1)}
                             >九成新</AtTag>
                             <AtTag
-                                type='primary' 
-                                active={tagCheckState[2]}
-                                circle
-                                onClick={changeTagState(2)}
+                              type='primary' 
+                              active={tagCheckState[2]}
+                              circle
+                              onClick={changeTagState(2)}
                             >七成新</AtTag>
                             <AtTag
-                                type='primary' 
-                                active={tagCheckState[3]}
-                                circle
-                                onClick={changeTagState(3)}
+                              type='primary' 
+                              active={tagCheckState[3]}
+                              circle
+                              onClick={changeTagState(3)}
                             >五成新</AtTag>
                     </View>
                 </View>

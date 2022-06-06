@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import Taro,{useDidShow} from '@tarojs/taro';
+import { useEffect, useState } from 'react';
 import { View,Image,Text } from '@tarojs/components';
 import api from '../../../../service/api';
-import Taro,{useDidShow} from '@tarojs/taro';
 import './index.scss'
+
 export default function GoodDetail() {
-    const pages = getCurrentPages()
+    const pages = Taro.getCurrentPages()
     const current = pages[pages.length - 1]
     const [pageId,setPageId] = useState()
     const eventChannel = current.getOpenerEventChannel()
@@ -119,7 +120,7 @@ export default function GoodDetail() {
                     goodInfo.images!==undefined?
                     goodInfo.images.map((item,index)=>{
                         return(
-                            <View className='good-detail-img-outer'>
+                            <View className='good-detail-img-outer' key={index}>
                                 <Image src={item.medium} mode='aspectFill' className='good-detail-img-height-adaptive' onLoad={imgOnload(index)}></Image>
                             </View>
                         )
@@ -127,7 +128,7 @@ export default function GoodDetail() {
                     :
                     <></>
                 }
-                <View className='filling'/>
+                <View className='filling'></View>
             </View>
             <View className='good-detail-toolbar-outer'>
                 <View className='good-detail-toolbar'>

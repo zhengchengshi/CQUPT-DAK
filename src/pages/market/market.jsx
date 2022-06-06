@@ -1,15 +1,13 @@
-import { Component, useEffect, useState } from 'react'
-import { View, Text } from '@tarojs/components'
+import Taro from '@tarojs/taro'
+import { useDispatch, useSelector } from 'react-redux'
+import {  useEffect } from 'react'
+import { View } from '@tarojs/components'
 import Header from '../../components/marketComponent/header'
 import DisplayContent from '../../components/marketComponent/displayContent'
-import BookHouse from '../../components/marketComponent/bookhouse'
-import React from 'react';
-import Taro,{Events} from '@tarojs/taro'
 import Login from '../../components/login'
 import { selectVerifyState,storageVerifyState } from '../../components/login/verifySlice'
-import { useDispatch, useSelector } from 'react-redux'
+
 export default function Market() {
-    const [controlLogin,setControlLogin] = useState(false)
     const veryfy = useSelector(selectVerifyState)
     const dispatch = useDispatch()
     useEffect(()=>{
@@ -23,8 +21,7 @@ export default function Market() {
         Taro.showTabBar()
       }
       Taro.checkSession({
-        complete:(res)=>{
-          setControlLogin(false)
+        complete:()=>{
           console.log('session未过期')
         },
         fail:()=>{

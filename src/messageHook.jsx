@@ -1,19 +1,19 @@
-import React from 'react'
-import { View } from '@tarojs/components'
 import Taro from '@tarojs/taro'
-import { storageMessageList,selectMessageList } from './messageListSlice'
-import { useDispatch,useSelector } from 'react-redux'
-import { storageCurrentMessage } from './currentMessageSlice'
+import { useDispatch } from 'react-redux'
+import { View } from '@tarojs/components'
 import { useEffect } from 'react'
-import { useState } from 'react'
-export default function messageHook() {
+import { storageMessageList } from './messageListSlice'
+import { storageCurrentMessage } from './currentMessageSlice'
+
+export default function MessageHook() {
     const dispatch = useDispatch()
     useEffect(()=>{
-        
         // socket连接
+        const token = Taro.getStorageSync('access_token')
         Taro.connectSocket({
             url: 'wss://be-prod.chongyouyizhan.xyz/chat',
-            protocols: [Taro.getStorageSync('access_token')]
+            protocols: [token],
+            success:(res)=>{console.log(res)}
         })
         .then(res=>{
             console.log(res)
@@ -21,9 +21,18 @@ export default function messageHook() {
 
         Taro.onSocketOpen((res)=>{
             console.log(res)
+            
+            setInterval(()=>{
+                Taro.sendSocketMessage({
+                    data:'ping',
+                    complete:(val)=>{
+                        console.log(val)
+                    }
+                })
+            },50*1000)
         })
         
-        Taro.onSocketError(function (res){
+        Taro.onSocketError(function (){
             console.log('WebSocket连接打开失败，请检查！')
         })
         // 接收到服务器的消息有三种
@@ -31,8 +40,8 @@ export default function messageHook() {
         // 第二种是收到的所有消息
         // 第三种是用户发送消息给他人，返回的消息（对象）
         Taro.onSocketMessage(function (res) {
-            console.log(JSON.parse(res.data))
-            const messageObj = JSON.parse(res.data)
+            // console.log(JSON.parse(res.data))
+            const messageObj = res.data==='pong'?'pong':JSON.parse(res.data)
             // 判断服务器返回的是数组还是对象，防止报错
             if(Array.isArray(messageObj)){
                 // 接收第一种消息

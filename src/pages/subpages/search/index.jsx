@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 import { View,Image,Input,Text } from '@tarojs/components';
 import Taro,{ useDidShow } from '@tarojs/taro';
 import { selectCheckState } from '../../../components/marketComponent/header/checkStateSlice';
 import './index.scss'
-import { useSelector } from 'react-redux';
-export default function index() {
+
+export default function Search() {
     const [historyItem,setHistoryItem] = useState([])
     const [controlPresent,setControlPresent] = useState('search-history-item')
     const [checkState,setCheckState] = useState('')
@@ -86,6 +87,7 @@ export default function index() {
     })
     
     useEffect(()=>{
+        console.log(checkState)
         setCheckState(flag)
     },[flag])
     return (
@@ -95,7 +97,7 @@ export default function index() {
                 <View className='search-header'>
                     <View className='search-header-searchbox'>
                         <Image src='https://s4.ax1x.com/2022/02/06/Hu44fO.png' className='search-header-searchbox-icon'></Image>
-                        <Input type="text" placeholder='请输入想要查询的内容' onConfirm={goSearch()} focus={true}/>
+                        <Input type='text' placeholder='请输入想要查询的内容' onConfirm={goSearch()} focus='true'></Input>
                     </View>
                 </View>
                 <View className='search-history'>
@@ -110,7 +112,7 @@ export default function index() {
                             historyItem.map((item,index)=>{
                                 return(
                                     // 长按事件只能绑定在View上
-                                    <View onLongPress={deleteHistoryItem(item,index)} onClick={goSearch(item)} className="search-history-item-outer">
+                                    <View onLongPress={deleteHistoryItem(item,index)} onClick={goSearch(item)} className='search-history-item-outer' key={index}>
                                         <Text className={controlPresent}>
                                             <Text>{item}</Text>
                                         </Text>

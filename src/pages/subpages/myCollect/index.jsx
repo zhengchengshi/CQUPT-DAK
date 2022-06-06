@@ -1,8 +1,9 @@
-import React, { useState,useEffect } from 'react'
+import Taro, {useDidShow} from '@tarojs/taro'
+import { useState,useEffect } from 'react'
 import { View,Image,Text } from '@tarojs/components'
 import api from '../../../service/api'
-import Taro, {useDidShow} from '@tarojs/taro'
 import './index.scss'
+
 export default function Collect() {
     const [itemArr,setItemArr] = useState([])
     const [checkStateArr,setCheckStateArr] = useState([])
@@ -56,8 +57,8 @@ export default function Collect() {
                         if(checkStateArr[i]===true){
                             // 删除项
                             api.delete('/market/favorites',{goods_id:itemArr[i].goods_id},'application/x-www-form-urlencoded')
-                                .then(res=>{
-                                    console.log(res)
+                                .then(val=>{
+                                    console.log(val)
                                 })
                             // 循环中不能这样用splice，因为每减一次都会导致数组元素整体前移，出现错位现象
                             // copyItemArr.splice(i,1)
@@ -128,7 +129,7 @@ export default function Collect() {
                 {
                     itemArr.map((item,index)=>{
                         return(
-                            <View className='collect-item' onClick={goDetail(item)}>
+                            <View className='collect-item' onClick={goDetail(item)} key={index}>
                                 <View className='collect-delete-btn'>
                                     {
                                         checkStateArr[index]?
