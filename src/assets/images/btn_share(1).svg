@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="55px" height="55px" viewBox="0 0 55 55" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>btn_share</title>
+    <defs>
+        <linearGradient x1="19.6445373%" y1="7.89724556%" x2="88.6187804%" y2="88.1660848%" id="linearGradient-1">
+            <stop stop-color="#DFDFDF" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <circle id="path-2" cx="22.5" cy="22.5" r="22.5"></circle>
+        <filter x="-3.3%" y="-3.3%" width="106.7%" height="106.7%" filterUnits="objectBoundingBox" id="filter-3">
+            <feGaussianBlur stdDeviation="1" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="0" dy="-1" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.6 0" type="matrix" in="shadowInnerInner1" result="shadowMatrixInner1"></feColorMatrix>
+            <feGaussianBlur stdDeviation="0.5" in="SourceAlpha" result="shadowBlurInner2"></feGaussianBlur>
+            <feOffset dx="1" dy="1" in="shadowBlurInner2" result="shadowOffsetInner2"></feOffset>
+            <feComposite in="shadowOffsetInner2" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner2"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.847058824   0 0 0 0 0.847058824   0 0 0 0 0.847058824  0 0 0 0.4 0" type="matrix" in="shadowInnerInner2" result="shadowMatrixInner2"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixInner1"></feMergeNode>
+                <feMergeNode in="shadowMatrixInner2"></feMergeNode>
+            </feMerge>
+        </filter>
+        <filter color-interpolation-filters="auto" id="filter-4">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 1.000000 0 0 0 0 0.643137 0 0 0 0 0.058824 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+        <linearGradient x1="100%" y1="100%" x2="0%" y2="6.123234e-15%" id="linearGradient-5">
+            <stop stop-color="#FFA40F" offset="0%"></stop>
+            <stop stop-color="#FFCF33" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="重邮驿站_社区_首页" transform="translate(-586.000000, -1425.000000)">
+            <g id="编组-47" transform="translate(18.000000, 942.000000)">
+                <g id="编组-46" transform="translate(22.000000, 22.000000)">
+                    <g id="编组-25" transform="translate(268.000000, 461.000000)">
+                        <g id="编组-32" transform="translate(283.000000, 5.000000)">
+                            <g id="椭圆形备份-8">
+                                <use fill-opacity="0.4" fill="#FFF8EC" fill-rule="evenodd" xlink:href="#path-2"></use>
+                                <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                                <circle stroke="url(#linearGradient-1)" stroke-width="0.1" stroke-linejoin="square" cx="22.5" cy="22.5" r="22.45"></circle>
+                            </g>
+                            <g filter="url(#filter-4)" id="编组-21">
+                                <g transform="translate(10.000000, 10.000000)">
+                                    <path d="M12.5,0 C19.4035594,0 25,5.59644063 25,12.5 C25,19.4035594 19.4035594,25 12.5,25 C5.59644063,25 0,19.4035594 0,12.5 C0,5.59644063 5.59644063,0 12.5,0 Z M17.0941609,4.98975573 C16.6446115,4.69134858 16.026113,4.7578579 15.6561047,5.16435167 C15.2552625,5.60471992 15.297842,6.27733921 15.7512088,6.66668889 L15.7512088,6.66668889 L17.7179096,8.35581043 C14.1144141,8.39572954 11.4873704,9.24272798 9.86669909,10.9747571 C8.04114224,12.9257497 7.19296244,15.3576785 7.33263892,18.1970647 C7.36384469,18.8314251 7.90339266,19.3203785 8.53775304,19.2891727 C9.17211342,19.257967 9.66106684,18.718419 9.62986108,18.0840586 C9.5201562,15.8539442 10.1554216,14.0324904 11.5461366,12.5462181 C12.6381469,11.3791747 14.60648,10.7275029 17.4775413,10.6599957 L15.7512088,12.1433111 L15.6538926,12.2379548 C15.2939151,12.6347664 15.2860965,13.2391546 15.6561047,13.6456483 C16.056947,14.0860166 16.7494202,14.1273753 17.2027869,13.7380256 L17.2027869,13.7380256 L20.3913325,10.9997145 L20.4893577,10.9101746 L20.5815405,10.8149599 C21.383225,9.93422343 21.298066,8.58898485 20.3913325,7.81028549 L20.3913325,7.81028549 L17.2027869,5.07197438 Z" id="形状结合" fill="url(#linearGradient-5)"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

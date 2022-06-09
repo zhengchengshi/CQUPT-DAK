@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="114px" height="114px" viewBox="0 0 114 114" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>btn_issue</title>
+    <defs>
+        <linearGradient x1="87.4265094%" y1="85.3676571%" x2="14.1009453%" y2="10.2322934%" id="linearGradient-1">
+            <stop stop-color="#FFA40F" offset="0%"></stop>
+            <stop stop-color="#FFE89D" offset="100%"></stop>
+        </linearGradient>
+        <circle id="path-2" cx="48" cy="48" r="48"></circle>
+        <filter x="-15.1%" y="-13.0%" width="130.2%" height="130.2%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.964705882   0 0 0 0 0.505882353   0 0 0 0 0  0 0 0 0.4 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <filter color-interpolation-filters="auto" id="filter-4">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="重邮驿站_社区_首页" transform="translate(-625.000000, -1331.000000)">
+            <g id="btn_post" transform="translate(625.000000, 1331.000000)">
+                <g id="编组" transform="translate(9.000000, 9.000000)">
+                    <g id="椭圆形">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                        <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    </g>
+                    <g filter="url(#filter-4)" id="编组-51">
+                        <g transform="translate(51.700000, 43.800000) rotate(45.000000) translate(-51.700000, -43.800000) translate(27.200000, 19.800000)">
+                            <path d="M22.2387664,4.19274998 L4.55613752,39.0250482 C3.65614233,40.7979125 4.36374253,42.9646932 6.1366068,43.8646884 C7.09800342,44.3527417 8.22753564,44.3841969 9.21460378,43.9504043 L23.6469189,37.6077506 C24.1061413,37.4059334 24.628748,37.404894 25.0887695,37.6048828 L39.7633719,43.9844881 C41.5867435,44.7771767 43.7074793,43.9416431 44.5001679,42.1182716 C44.9302373,41.1290103 44.894038,39.9990292 44.4015331,39.0393228 L26.5140504,4.18336758 C25.9088719,3.00410291 24.4622949,2.53871415 23.2830302,3.1438927 C22.8331386,3.37476939 22.4676662,3.7418494 22.2387664,4.19274998 Z" id="路径-12" stroke="#979797" stroke-width="5.2"></path>
+                            <line x1="24.3493513" y1="36.5631199" x2="24.3708356" y2="4.79046543" id="路径-13" stroke="#979797" stroke-width="5.2" stroke-linecap="round"></line>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
