@@ -1,6 +1,36 @@
 .community-outer{
     width: 100%;
-    height: 100vh;
+    height: 100vh;  
+//     .shadow{
+//     height: 100%;
+//     width: 100%;
+//     overflow: hidden;
+//     display: flex;
+//     flex-direction: column-reverse;
+//     position: fixed;
+//     top: 0px;
+//     left: 0px;
+//     z-index: 999 !important;
+//     background-color: rgba($color: #000000, $alpha: 0.5);
+   
+//     &_hide{
+//         height: 0px;
+//         overflow: hidden;
+//         visibility: hidden;
+//     }
+//     .moreButton{
+//     background-color: #D8D8D8;
+//     border-top-left-radius: 35px;
+//     border-top-right-radius: 35px;
+//     Button{    
+//     font-size: 28px;    
+//     font-weight: 550;
+//     }
+//     Button:last-child{
+//         margin-top: 20px;
+//     }
+// }
+//     }
     .community-header{
         width: 100%;
         height: 108px;
@@ -54,12 +84,32 @@
         }
     }
     .community-content{
-        height: calc(100vh - 108px);
+        
         padding: 20px 18px;
         box-sizing: border-box;
+        background-color: #f0f0f0;
+        // .issure{
+        //     height: 108px;
+        //     width: 108px;
+        //     position: fixed;
+        //     bottom: 0px;
+        //     right: 0px;
+        //     Image{
+        //         width: 100%;
+        //         height: 100%;
+        //         box-sizing: border-box;
+        //         margin: 0px;
+        //         padding: 0px;
+        //         border-radius: 100px;
+        //     }
+        // }
         .community-content-item{
             padding: 22px 22px 0 22px;
             box-sizing: border-box;
+            border-radius: 36px;
+            background-color: white;            
+            border: 1px solid #f0f0f0;
+            margin-bottom: 20px;
             .community-content-item-header{
                 width: 100%;
                 height: 80px;
@@ -154,5 +204,70 @@
                 }
             }
         }
+    }
+}
+.issure{
+    height: 108px;
+    width: 108px;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    Image{
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        margin: 0px;
+        padding: 0px;
+        border-radius: 100px;
+    }
+}
+.flowLock{
+    height:100%;position: absolute;overflow-y: hidden;
+}
+.shadow{
+    height: 100vh;
+    width: 100%;
+    z-index: 999 !important;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column-reverse;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    
+    background-color: rgba($color: #000000, $alpha: 0.5);
+   
+    &_hide{
+        height: 0px;
+        overflow: hidden;
+        visibility: hidden;
+    }
+    .moreButton{
+    background-color: #D8D8D8;
+    border-top-left-radius: 35px;
+    border-top-right-radius: 35px;
+    Button{    
+    color:#333333;
+    font-size: 28px;
+    font-weight: 500;
+    }
+    Button:last-child{
+        margin-top: 20px;
+    }
+}
+    }
+.searchShadow{
+    height: 100%;
+    width: 100vw;
+    position: fixed;
+    top: 108px;
+    left: 0px;
+    z-index: 20;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+
+    &_hide{
+        height: 0px;
+        overflow: hidden;
+        visibility: hidden;
     }
 }
