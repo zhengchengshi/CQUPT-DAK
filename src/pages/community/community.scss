@@ -88,21 +88,6 @@
         padding: 20px 18px;
         box-sizing: border-box;
         background-color: #f0f0f0;
-        // .issure{
-        //     height: 108px;
-        //     width: 108px;
-        //     position: fixed;
-        //     bottom: 0px;
-        //     right: 0px;
-        //     Image{
-        //         width: 100%;
-        //         height: 100%;
-        //         box-sizing: border-box;
-        //         margin: 0px;
-        //         padding: 0px;
-        //         border-radius: 100px;
-        //     }
-        // }
         .community-content-item{
             padding: 22px 22px 0 22px;
             box-sizing: border-box;
@@ -173,6 +158,8 @@
                 .community-content-item-operation-bar{
                     display: flex;
                     align-items: center;
+                    color: #a8a8a8;
+                    font-size: 28px;
                     .community-content-item-operation-bar-like{
                         width: 55px;
                         height: 55px;
@@ -191,7 +178,9 @@
                 }
             }
             .community-content-item-comment{
-                margin-top: 29px;
+                border-top: 1px solid #f0f0f0;
+                margin-top: 15px;
+                margin-bottom: 15px;
                 .community-content-item-comment-username{
                     color:#333333;
                     font-size: 28px;
@@ -209,6 +198,7 @@
 .issure{
     height: 108px;
     width: 108px;
+    padding: 20px 18px;
     position: fixed;
     bottom: 0px;
     right: 0px;

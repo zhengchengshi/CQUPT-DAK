@@ -34,6 +34,10 @@ export default {
     {
       "root":"pages/subpages/receiptSubpage",
       "pages":["receiptSearch/index","receiptDetail/index","receiptPost/index"]
+    },
+    {
+      "root":"pages/subpages/communitySubpage",
+      "pages":["communitySearch/index","communityDetail/index","communityIssue/index"]
     }
   ],
   window: {

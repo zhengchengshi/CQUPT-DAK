@@ -1,0 +1,176 @@
+.communityIssue-header{
+    width: 100%;
+    height: 100px;
+    background-image: url('https://s1.ax1x.com/2022/03/29/q64Zu9.png');
+    line-height: 100px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 550;
+    padding-top: 28px;
+    color: #333333;
+    .communityIssue-submitCommunity{
+        width: 150px;
+        height: 68px;
+        background: linear-gradient(225deg, #FFA40F 0%, #FFCF33 100%);
+        border-radius: 34px;
+        text-align: center;
+        line-height: 68px;
+        font-weight: 600;
+        color: #FFFFFF;
+        font-size: 32px;
+        margin-right: 46px;
+    }
+}
+.communityIssue-mask{
+    width: 100%;
+    height: 100%;
+    z-index: 999 !important;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    
+    &-hide{
+        height: 0px;
+        overflow: hidden;
+        visibility: hidden;
+    }
+    .communityIssue-mask-msgBox{
+        width: 75%;
+        height: 30%;
+        box-sizing: border-box;
+        padding: 26px 40px 26px 44px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: white;
+        border-radius: 32px;
+        color: #333333;
+        Text:nth-child(1){
+            font-size: 32px;
+            font-weight: 550;
+            margin-bottom: 28px;
+        }
+        Text:nth-child(2){
+            font-size: 32px;
+        }
+        .communityIssue-mask-msgBox-btn{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-direction: row;
+            border-radius: 32px;
+            margin-top: 32px;
+            .communityIssue-mask-msgBox-btn-yes{
+                width: 45%;
+                font-size: 32px;                
+                color: #a8a8a8;
+                border-radius: 32px;
+                border: none;
+                background-color: #F0F0F0;
+            }
+            .communityIssue-mask-msgBox-btn-no{
+                width: 45%;
+                font-size: 32px;
+                border-radius: 32px;
+                color: #FFFFFF;
+                border: none;
+                background-color: #FFA40F;
+            }
+
+        }
+
+    }
+}
+.communityIssue-content{
+    width: 100%;
+    height: calc(100vh - 100px);
+    box-sizing: border-box;
+    background: #F0F0F0;
+    .communityIssue-formdata-content-shadow{
+        width: 100%;
+        height: 240px;
+        position: absolute;
+    }
+    .communityIssue-formdata{
+        width: 690px;
+        height: 816px;
+        box-sizing: border-box;
+        position: absolute;
+        left: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transform: translateX(-50%);
+        z-index: 100;
+        box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.08);
+        border-radius: 40px;
+        background-color: white;
+        .communityIssue-formdata-content{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin: 40px auto 0 40px;
+            color: #a8a8a8;
+            .communityIssue-formdata-content-title{
+                display: flex;
+                padding-left: 10px;
+                justify-content: flex-start;
+                flex-direction: column;
+                Text{
+                    width: 50%;
+                }
+                Input{
+                    color: #333333;
+                }
+            }
+            .communityIssue-formdata-content-detail{
+                display: flex;
+                justify-content: flex-start;
+                flex-direction: column;
+                width: 90%; 
+                border: none; 
+                color: #333333; 
+                       
+        }
+        .communityIssue-formdata-images{
+            width: 100%;
+            height: 236px;
+            overflow: hidden;
+            position: relative;
+            padding-bottom: 40px;
+            Text{
+                position: absolute;
+                top: 60%;
+                left: 20px;
+
+            }
+            }    
+        
+    }
+    // .communityIssue-addPhotos{
+    //     position: absolute;
+    //     bottom: 106px;
+    //     left: 50%;
+    //     transform: translateX(-50%);
+    //     width: 634px;
+    //     height: 74px;
+    //     background: linear-gradient(225deg, #FFA40F 0%, #FFCF33 100%);
+    //     border-radius: 37px;
+    //     text-align: center;
+    //     line-height: 74px;
+    //     color: white;
+    //     font-size: 32px;
+    //     font-weight: 600;
+    //     z-index: 200;
+    // }
+}
+}
