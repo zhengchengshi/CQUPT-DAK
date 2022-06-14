@@ -100,9 +100,10 @@ export default function SearchTeam() {
               >
                 <View className="toolbox-searchteam-content-item-left">
                   <Image
+                  
                     src={
                       item.images.length !== 0
-                        ? item.images.medium
+                        ? item.images[0].medium
                         : "https://s1.ax1x.com/2022/04/16/LJ8Kc6.png"
                     }
                     mode="aspectFill"
